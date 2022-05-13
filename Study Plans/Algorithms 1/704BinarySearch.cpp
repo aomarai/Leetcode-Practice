@@ -15,23 +15,16 @@ public:
         //Search the array by seeing if the target is larger or smaller than the middle value.
         else
         {
-            //Target is smaller than the middle value, so search first half
+            //Target is smaller than the middle value, so search first half for target value
             if (target < nums[midIndex])
             {
-                for (int i = 0; i < midIndex; i++)
-                {
-                    if (nums[i] == target)
-                        return i;
-                }
+                //Search the first half of the array
+                return search(vector<int>(nums.begin(), nums.begin() + midIndex), target);
             }
             else
             {
-                //Target is bigger than the middle value, so search second half
-                for (int i = midIndex; i < nums.size(); i++)
-                {
-                    if (nums[i] == target)
-                        return i;
-                }
+                //Target is bigger than the middle value, so search second half for target value
+                return search(vector<int>(nums.begin() + midIndex, nums.end()), target);
             }
         }
         return -1;
